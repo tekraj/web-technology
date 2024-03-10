@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./assets/libs/bootstrap-5.3.2/css/bootstrap.min.css">
+</head>
+
+<body>
+  <header>
+    <nav class="container">{{name}}</nav>
+  </header>
+  <section>
+    <form>
+      <input type="text" name="color" id="color" placeholder="Enter color Name">
+      <button id="add-color" class="btn btn-primary" type="button">Add New Color</button>
+    </form>
+    <ul id="colors"></ul>
+  </section>
+  <footer></footer>
+  <script>
+    let allowedColors = ['yellow','orange','green'];
+    let colors = ['red','green','blue'];
+    let colorList = document.getElementById("colors");
+    for(let i=0;i<colors.length;i++){
+      colorList.innerHTML+= `<li>${colors[i]}</li>`
+    }
+
+    document.getElementById('add-color').addEventListener('click',function(){
+      const color = document.getElementById('color').value;
+      if(color.trim()){
+        const allowedColor = allowedColors.some(c=>c===color);
+        if(allowedColor){
+          colorList.innerHTML += `<li>${color}</li>`;
+        }
+      }
+    });
+
+  </script>
+</body>
+
+</html>
