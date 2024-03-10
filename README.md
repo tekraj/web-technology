@@ -6,6 +6,8 @@
 - pip install python-dotenv
 - pip install Flask-Migrate
 
+## Or simply run pip install requirements.txt 
+
 ### Copy .env-example to .env and add your env values
 ## Use Docker for running 
 - docker-compose up -d (this will run the application)
