@@ -1,0 +1,38 @@
+body {
+  background-color: #f8f9fa;
+}
+.signin-form {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+.signin-form h2 {
+  margin-bottom: 30px;
+}
+.signin-form form {
+  margin-bottom: 15px;
+}
+.signin-form p {
+  margin-top: 20px;
+}
+
+.signup-form {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+.signup-form h2 {
+  margin-bottom: 30px;
+}
+.signup-form form {
+  margin-bottom: 15px;
+}
+.signup-form p {
+  margin-top: 20px;
+}
