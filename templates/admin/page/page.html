@@ -1,0 +1,45 @@
+{% extends "admin/layout.html" %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Page Management</h5>
+        <!-- Search form -->
+        <!-- <form class="form-inline mb-3 container-fluid">
+            <div class="row">
+                <div class="col-sm-9">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                </div>
+            </div>
+        </form> -->
+        <!-- Create new page button -->
+        <a class="btn btn-success mb-3" href="{{url_for('admin_page_show_create_form')}}">Create New Page</a>
+        <!-- Existing pages list table -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Date Created</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for page in pages %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ page.title }}</td>
+                        <td>{{ page.date_created }}</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary">Edit</button>
+                            <button class="btn btn-sm btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

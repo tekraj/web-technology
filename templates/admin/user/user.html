@@ -1,0 +1,50 @@
+{% extends "admin/layout.html" %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Page Management</h5>
+
+        <!-- Search form -->
+        <form class="form-inline mb-3">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <!-- Create new page button -->
+        <button class="btn btn-success mb-3">Create New Page</button>
+
+        <!-- Existing pages list table -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Date Created</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Sample Page 1</td>
+                    <td>2024-03-24</td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                        <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Sample Page 2</td>
+                    <td>2024-03-25</td>
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                        <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                </tr>
+                <!-- Add more page items here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

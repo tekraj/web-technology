@@ -34,3 +34,4 @@ libs/
 # Miscellaneous
 *.swp
 .DS_Store
+/uploads/

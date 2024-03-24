@@ -53,3 +53,4 @@ class UserController:
         # Regular expression for email validation
         email_regex = r'^[\w\.-]+@[\w\.-]+\.\w+$'
         return bool(re.match(email_regex, email))
+    

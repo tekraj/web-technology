@@ -1,32 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In/Signup</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='libs/bootstrap-5.3.2/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/admin.css')}}">
 </head>
 <body>
-
-<!-- Sidebar -->
-<div class="sidebar">
-    <h2 class="text-center text-white">Admin Dashboard</h2>
-    <a href="#">Dashboard</a>
-    <a href="#">Users</a>
-    <a href="#">Pages</a>
-    <a href="#">Posts</a>
-    <a href="#">Logout</a>
-</div>
-
-<!-- Content -->
-<div class="content">
-    <h2>Dashboard</h2>
-    <p>Welcome to the admin dashboard.</p>
-</div>
-
-<!-- Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <nav class="navbar navbar-dark bg-dark custom-header">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Admin Dashboard</span>
+            <div>
+              <span class="text-white mr-3">Username</span>
+              <a href="#" class="btn btn-outline-light">Logout</a>
+            </div>
+        </div>
+      </nav>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-2 sidebar">
+            <ul class="nav flex-column mt-3">
+              <li class="nav-item">
+                <a class="nav-link active" href="{{url_for('admin_dashboard')}}">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('admin_user')}}">Users</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('admin_page')}}">Pages</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('admin_post')}}">Posts</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-10 main-content">
+            <!-- All the sub pages will be injected here -->
+            {% block content %}
+            {% endblock %}
+          </div>
+        </div>
+      </div>
+  <!-- Bootstrap JS -->
+  <script src="{{ url_for('static',filename='libs/bootstrap-5.3.2/js/bootstrap.min.js')}}"></script>
 </body>
+
 </html>
