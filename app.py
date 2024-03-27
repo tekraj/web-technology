@@ -7,7 +7,6 @@ from models.db import db,db_config
 from middlewares.auth_middleware import is_authenticated
 load_dotenv() # load environmental values
 
-
 # create app
 app = Flask(__name__)
 app.secret_key = os.getenv('APP_SECRET_KEY')
@@ -28,6 +27,19 @@ userController = UserController()
 
 
 # Routes
+@app.route('/',methods=['GET'])
+def index():
+    name = 'John Doe'
+    pages = PageController.list_pages(1, 10)
+    home_page=PageController.get_page_by_id(7)
+    return render_template('index.html',pages=pages,home_page=home_page,name=name)
+
+@app.route('/page/:url',methods=['GET'])
+def page():
+    url = request.query_string
+    page= PageController.get_page_by_name(url)
+    return render_template('index.html',page=page)
+
 # display sigin page
 @app.route('/signin',methods=['GET'])
 def signin():
@@ -90,6 +102,13 @@ def admin_page():
 def admin_page_show_create_form():
     return render_template('admin/page/create-page.html')
 
+# display update  page form
+@app.route('/admin/page/update-page/<page_id>',methods=['GET']) 
+@is_authenticated 
+def admin_page_show_update_form(page_id):
+    page = PageController.get_page_by_id(page_id)
+    return render_template('admin/page/edit-page.html',page=page)
+
 @app.route('/admin/page/create',methods=['POST']) 
 @is_authenticated 
 def admin_page_create():
@@ -100,6 +119,17 @@ def admin_page_create():
     if create_post:
         return redirect(url_for('admin_page'))  
     return redirect(url_for('admin_page_create'))  
+
+@app.route('/admin/page/update/<page_id>',methods=['POST']) 
+@is_authenticated 
+def admin_page_update(page_id):
+    name = request.form['name']
+    description = request.form['description']
+    images  = request.files.getlist('image')
+    create_post = PageController.update_page(page_id=page_id,name=name,description=description)
+    if create_post:
+        return redirect(url_for('admin_page'))  
+    return redirect(url_for('admin_page_show_update_form')) 
 # display admin post management page
 @app.route('/admin/post',methods=['GET']) 
 @is_authenticated 

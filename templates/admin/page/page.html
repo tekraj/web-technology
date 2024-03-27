@@ -30,10 +30,10 @@
                 {% for page in pages %}
                     <tr>
                         <td>{{ loop.index }}</td>
-                        <td>{{ page.title }}</td>
-                        <td>{{ page.date_created }}</td>
+                        <td>{{ page.name }}</td>
+                        <td>{{ page.created_at }}</td>
                         <td>
-                            <button class="btn btn-sm btn-primary">Edit</button>
+                            <a href="{{url_for('admin_page_show_update_form',page_id=page.id)}}" class="btn btn-sm btn-primary">Edit</a>
                             <button class="btn btn-sm btn-danger">Delete</button>
                         </td>
                     </tr>

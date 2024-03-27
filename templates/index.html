@@ -4,41 +4,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="./assets/libs/bootstrap-5.3.2/css/bootstrap.min.css">
+  <title>Sign In/Signup</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='libs/bootstrap-5.3.2/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='css/admin.css')}}">
 </head>
 
 <body>
   <header>
-    <nav class="container">{{name}}</nav>
+    <nav class="container-flud">
+      <div class="row">
+        <div class="col-sm-3">
+          <h3>{{name}}</h3>
+        </div>
+        <div class="col-md-9">
+          <ul class="nav">
+            {% for page in pages %}
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#">{{page.name}}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </nav>
   </header>
-  <section>
-    <form>
-      <input type="text" name="color" id="color" placeholder="Enter color Name">
-      <button id="add-color" class="btn btn-primary" type="button">Add New Color</button>
-    </form>
-    <ul id="colors"></ul>
-  </section>
+  <div>
+    <p>{{home_page.description}}</p>
+  </div>
   <footer></footer>
-  <script>
-    let allowedColors = ['yellow','orange','green'];
-    let colors = ['red','green','blue'];
-    let colorList = document.getElementById("colors");
-    for(let i=0;i<colors.length;i++){
-      colorList.innerHTML+= `<li>${colors[i]}</li>`
-    }
-
-    document.getElementById('add-color').addEventListener('click',function(){
-      const color = document.getElementById('color').value;
-      if(color.trim()){
-        const allowedColor = allowedColors.some(c=>c===color);
-        if(allowedColor){
-          colorList.innerHTML += `<li>${color}</li>`;
-        }
-      }
-    });
-
-  </script>
+  <script src="{{ url_for('static',filename='libs/bootstrap-5.3.2/js/bootstrap.min.js')}}"></script>
 </body>
 
 </html>

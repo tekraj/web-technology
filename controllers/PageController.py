@@ -40,7 +40,7 @@ class PageController:
         return Page.query.get(page_id)
     
     @staticmethod
-    def update_page(page_id, name=None, url=None, description=None):
+    def update_page(page_id, name=None,  description=None):
         page = PageController.get_page_by_id(page_id)
         if not page:
             return None
