@@ -31,14 +31,14 @@ userController = UserController()
 def index():
     name = 'John Doe'
     pages = PageController.list_pages(1, 10)
-    home_page=PageController.get_page_by_id(7)
-    return render_template('index.html',pages=pages,home_page=home_page,name=name)
+    page,page_images= PageController.get_page_by_url('home-page')
+    return render_template('index.html',pages=pages,page=page,page_images=page_images)
 
-@app.route('/page/:url',methods=['GET'])
-def page():
-    url = request.query_string
-    page= PageController.get_page_by_name(url)
-    return render_template('index.html',page=page)
+@app.route('/page/<url>',methods=['GET'])
+def page(url):
+    pages = PageController.list_pages(1, 10)
+    page,page_images = PageController.get_page_by_url(url)
+    return render_template('index.html',page=page,images=page_images,pages=pages)
 
 # display sigin page
 @app.route('/signin',methods=['GET'])
@@ -106,7 +106,7 @@ def admin_page_show_create_form():
 @app.route('/admin/page/update-page/<page_id>',methods=['GET']) 
 @is_authenticated 
 def admin_page_show_update_form(page_id):
-    page = PageController.get_page_by_id(page_id)
+    page,page_images = PageController.get_page_by_id(page_id)
     return render_template('admin/page/edit-page.html',page=page)
 
 @app.route('/admin/page/create',methods=['POST']) 

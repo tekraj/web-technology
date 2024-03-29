@@ -37,11 +37,13 @@ class PageController:
     
     @staticmethod
     def get_page_by_id(page_id):
-        return Page.query.get(page_id)
+        page = Page.query.get(page_id)
+        page_images = PageImage.query.filter(PageImage.page_id==page.id).all()
+        return (page,page_images)
     
     @staticmethod
     def update_page(page_id, name=None,  description=None):
-        page = PageController.get_page_by_id(page_id)
+        page,page_images = PageController.get_page_by_id(page_id)
         if not page:
             return None
         try:
@@ -85,3 +87,8 @@ class PageController:
             print(e)
             db.session.rollback()
             return False
+    def get_page_by_url(url):
+        print(url)
+        page = Page.query.filter(Page.url==url).first()
+        page_images = PageImage.query.filter(PageImage.page_id==page.id).all()
+        return (page,page_images)
