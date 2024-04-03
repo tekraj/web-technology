@@ -29,7 +29,7 @@ config.py
 
 # Dependency directories
 lib/
-libs/
+
 
 # Miscellaneous
 *.swp
