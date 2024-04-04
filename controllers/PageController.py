@@ -7,7 +7,7 @@ from models.Page import Page
 from models.PageImage import PageImage
 
 class PageController:
-    UPLOAD_FOLDER = '/static/uploads/'
+    UPLOAD_FOLDER = 'static/uploads/'
 
     @staticmethod
     def list_pages(page_number=1, per_page=10):
@@ -42,7 +42,7 @@ class PageController:
         return (page,page_images)
     
     @staticmethod
-    def update_page(page_id, name=None,  description=None):
+    def update_page(page_id, name=None,  description=None,images=None):
         page,page_images = PageController.get_page_by_id(page_id)
         if not page:
             return None
@@ -53,6 +53,8 @@ class PageController:
             if description:
                 page.description = description
             db.session.commit()
+            if images:
+                PageController.add_images_to_page(page.id,images)
             return page
         except Exception as e:
             db.session.rollback()

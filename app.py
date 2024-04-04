@@ -125,8 +125,8 @@ def admin_page_update(page_id):
     name = request.form['name']
     description = request.form['description']
     images  = request.files.getlist('image')
-    create_post = PageController.update_page(page_id=page_id,name=name,description=description)
-    if create_post:
+    update_page = PageController.update_page(page_id=page_id,name=name,description=description,images=images)
+    if update_page:
         return redirect(url_for('admin_page'))  
     return redirect(url_for('admin_page_show_update_form')) 
 # display admin post management page
