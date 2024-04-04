@@ -32,7 +32,7 @@
   <div>
     <p>{{page.description|safe}}</p>
     {% for image in page_images %}
-      <img src="{{url_for('static',filename=image.image)}}">
+      <img src="{{url_for('static',filename="uploads/"+image.image)}}">
     {% endfor %}
   </div>
   {% endif %}

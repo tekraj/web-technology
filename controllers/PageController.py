@@ -80,7 +80,7 @@ class PageController:
                 filename = secure_filename(image.filename)
                 filepath = os.path.join(PageController.UPLOAD_FOLDER, filename)
                 image.save(filepath)
-                new_image = PageImage(image=filepath, page_id=page_id)
+                new_image = PageImage(image=filename, page_id=page_id)
                 db.session.add(new_image)
             
             db.session.commit()
