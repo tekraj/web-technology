@@ -7,7 +7,7 @@ from models.Page import Page
 from models.PageImage import PageImage
 
 class PageController:
-    UPLOAD_FOLDER = 'uploads/'
+    UPLOAD_FOLDER = '/static/uploads/'
 
     @staticmethod
     def list_pages(page_number=1, per_page=10):

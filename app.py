@@ -29,7 +29,6 @@ userController = UserController()
 # Routes
 @app.route('/',methods=['GET'])
 def index():
-    name = 'John Doe'
     pages = PageController.list_pages(1, 10)
     page,page_images= PageController.get_page_by_url('home-page')
     return render_template('index.html',pages=pages,page=page,page_images=page_images)
