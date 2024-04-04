@@ -90,5 +90,7 @@ class PageController:
     def get_page_by_url(url):
         print(url)
         page = Page.query.filter(Page.url==url).first()
+        if(page==None):
+            return (None,[])
         page_images = PageImage.query.filter(PageImage.page_id==page.id).all()
         return (page,page_images)
